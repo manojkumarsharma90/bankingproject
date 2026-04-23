@@ -1,0 +1,54 @@
+<div class="mb-3 text-center">
+  <label class="text-danger">Select Date:</label>
+  <input 
+    type="date" 
+    [(ngModel)]="selectedDate" 
+    class="mb-3"
+  />
+
+  <button 
+    class="btn btn-primary ms-2"
+    (click)="filterByDate()"
+    [disabled]="!selectedDate"
+  >
+    Filter
+  </button>
+</div>
+
+<div class="container mt-4 bg-success-subtle">
+
+  <table class="table table-bordered table-hover">
+    
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Description</th>
+        <th>Type</th>
+        <th (click)="sortByAmount()" style="cursor: pointer;">
+          Amount
+        </th>
+        <th>Available Balance</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <!-- No Data Row -->
+      <tr *ngIf="!filteredTransactions.length">
+        <td colspan="5" class="text-center text-danger">
+          {{ msg }}
+        </td>
+      </tr>
+
+      <!-- Data Rows -->
+      <tr *ngFor="let txn of filteredTransactions">
+        <td>{{ txn.date }}</td>
+        <td>{{ txn.description }}</td>
+        <td>{{ txn.type }}</td>
+        <td>{{ txn.amount | currency:'USD' }}</td>
+        <td>{{ txn.balance }}</td>
+      </tr>
+    </tbody>
+
+  </table>
+
+</div>
