@@ -32,7 +32,7 @@ selectedDate?: string;
       return;
     }
 
-    // ✅ FIX: use local date instead of toISOString()
+    
     const d = new Date(this.selectedDate);
     const formattedDate =
       d.getFullYear() + '-' +
@@ -43,7 +43,7 @@ selectedDate?: string;
       (txn: any) => txn.date === formattedDate
     );
 
-    // ✅ handle no data case
+  
     if (this.filteredTransactions.length === 0) {
       this.msg = "No transactions found";
     }
