@@ -1,3 +1,6 @@
 import { Routes } from '@angular/router';
+import { RecordtableComponent } from './recordtable/recordtable.component';
 
-export const routes: Routes = [];
+export const routes: Routes = [
+    {path:'bank',component:RecordtableComponent}
+];
